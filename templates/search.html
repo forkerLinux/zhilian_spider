@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+
+{% block contents %}
+<div>
+    <form class="form-horizontal" method="POST" action="search" id="jd_detail">
+        <div class="form-group">
+        <label class="col-sm-1 control-label">关键词</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="关键词" required>
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="col-sm-1 control-label">学历要求</label>
+        <div class="col-sm-2">
+            <select class="form-control" name="edu_min" id="edu-min" onchange="select_edu(event.srcElement.options[event.srcElement.selectedIndex].value)">
+                <option value="1">初中</option>
+                <option value="2">中技</option>
+                <option value="3">高中</option>
+                <option value="4">中专</option>
+                <option value="5">大专</option>
+                <option value="7">本科</option>
+                <option value="9">硕士</option>
+                <option value="11">MBA</option>
+                <option value="13">EMBA</option>
+                <option value="15">博士</option>
+                <option value="0">其它</option>
+            </select>
+        </div>
+
+        <div class="col-sm-2">
+            <select class="form-control" name="edu_max" id="edu-max" onchange="console.log(event.srcElement.options[event.srcElement.selectedIndex].value)" >
+                <option value="1">初中</option>
+                <option value="2">中技</option>
+                <option value="3">高中</option>
+                <option value="4">中专</option>
+                <option value="5">大专</option>
+                <option value="7">本科</option>
+                <option value="9">硕士</option>
+                <option value="11">MBA</option>
+                <option value="13">EMBA</option>
+                <option value="15">博士</option>
+                <option value="0">其它</option>
+            </select>
+
+        </div>
+
+        </div>
+
+        <div id="div_review" class="form-group" >
+        <label class="col-sm-5 control-label">
+                <button type="submit" class="btn btn-default">提交</button>
+        </label>
+        </div>
+
+    </form>
+
+</div>
+
+</div>
+
+<script>
+function select_edu(edu_min) {
+    var edu_min = parseInt(edu_min);
+    var eduArray = new Array('1', '2', '3', '4', '5', '7', '9', '11', '13', '15', '16')
+    var nameArray = new Array('初中', '中技', '高中', '中专', '大专', '本科', '硕士', 'MBA', 'EMBA', '博士', '其它')
+    $('#edu-max').empty();
+
+    for(var i = 0; i < eduArray.length; i++) {
+        if (edu_min < parseInt(eduArray[i])) {
+            if (eduArray[i] != '16') {
+                var foo_str = "<option value=" + eduArray[i] + ">"+ nameArray[i]+"</option>";
+            }
+            else {
+                var foo_str = "<option value='0'>"+ nameArray[i]+"</option>";
+            }
+            $('#edu-max').append(foo_str);
+        }
+    }
+}
+</script>
+{% endblock %}
+

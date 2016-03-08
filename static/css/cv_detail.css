@@ -1,0 +1,135 @@
+.left_con{
+    float: left;
+    width: 820px;
+}
+.left_con iframe{
+    overflow: auto;
+    float: left;
+    border:1px solid #ccc;
+}
+.left_con .l_icon{
+    list-style-type: none;
+    float: left;
+    padding-left: 10px;
+}
+.l_icon li{
+    width: 40px;r
+    height: 40px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.left_con .s_resume{
+    list-style-type: none;
+    float: left;
+    padding-left: 10px;
+    top:50px;
+    /*right:44px;*/
+    position: relative;
+}
+.s_resume li{
+    width:25px;
+    padding: 5px;
+    border-radius: 3px;
+    background:#428BCA;
+    color: #fff;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.s_resume li.orange{
+    background:#FF4400;     
+}
+.right_con, .right_con2{
+    float: right;
+    width: 330px;
+    margin-top:10px;
+}
+.right_con2, .right_con2 div{
+    display: none;
+}
+.right_con>div{
+    float: left;
+}
+.right_con label{
+    max-width:60px;
+    width:60px;
+}
+.right_con label, input{
+    font-size:12px;
+    font-family:'microsoft yahei';
+}
+.job_state div{
+    float: right;
+    width: 260px;
+    top: -8px;
+    position: relative;
+}
+.job_state span{
+    width: 120px;
+    padding: 5px 0 5px 8px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: block;
+    float: left;
+    background:#428BCA;
+    color: #fff;
+    cursor: pointer;
+    font-size:12px;
+    font-family:'microsoft yahei';
+}
+.hiredate{
+    margin-bottom:10px;
+}
+#cur_gs, .exp_trade, .exp_job, .cur_job, .comment{
+    margin-bottom:15px;
+}
+#month{
+    margin-right: 20px;
+}
+#exp_t, #exp_j, #exp_h, #exp_txt, #cur_gs, #cur_job{
+    width:249px;
+    height: 30px;
+    padding-left: 8px;
+    margin-right: 10px;
+    background:none;
+    border:1px solid #ccc;
+}
+.right_con input[type=button]{
+    background: #428BCA;
+    color: #fff;
+    border: none;
+    padding: 5px 30px;
+    margin-left: 65px;
+}
+.right_con textarea{
+    width: 249px;
+    padding:5px 8px;
+    line-height: 25px;
+    resize:none;
+    background:none;
+    border:1px solid #ccc;
+    float:right;
+}
+ul#tag{
+    list-style-type: none;
+    float: right;
+    padding-left: 0;
+    right:10px;
+    position: fixed;
+}
+#tag li{
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    color: #fff;
+    background: #428BCA;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+li.orange, span.orange{
+    background: #FF4400!important;
+}
+.container-fluid{
+    padding-left:0;
+    padding-right:0;
+}

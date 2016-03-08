@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block head %}
+<style>
+a:visited {color:#f40}
+</style>
+{% endblock %}
+
+{% block contents %}
+<div class="row">
+    <hr>
+    <table class="table table-hover" id="result_list">
+        <thead>
+            <tr>
+                <th>cvid</th>
+                <th>简历名称</th>
+                <th>职位名称</th>
+                <th>学历</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>现居住地</th>
+                <th>更新时间</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% for item in result_list %}
+        <tr>
+        <td>
+            <a href="/cv_detail/{{ item[0] }}">{{ item[0] }}</a>
+        </td>
+
+        <td>
+            {{ item[1] }}
+        </td>
+
+
+        <td>
+            {{ item[2] }}
+        </td>
+
+        <td>
+            {{ item[3] }}
+        </td>
+
+        <td>
+            {{ item[4] }}
+        </td>
+
+        <td>
+            {{ item[5] }}
+        </td>
+
+        <td>
+            {{ item[6] }}
+        </td>
+
+        <td>
+            {{ item[7] }}
+        </td>
+
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <button class="btn" id="previous">上一页</button>
+    <button class="btn" id="next">下一页</button>
+    <span id="pageinfo">{{ pageinfo }}</span>
+</div>
+
+<script>
+jQuery("#previous").click(function(){
+        skip_nearby('prev');
+});
+
+jQuery("#next").click(function(){
+        skip_nearby('next');
+});
+
+function skip_nearby(type) {
+    var post_data = {"type":type};
+    $.ajax({
+            url: "/api/skip_nearby",
+            type: "POST",
+            data: JSON.stringify(post_data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(resp) {
+            console.log(resp);
+
+            if (resp["errcode"] != 0) {
+                alert("查询失败，请稍候再试"); 
+            };
+
+            jQuery("#pageinfo").html(resp["pageinfo"]);
+            
+            var result = resp["items"];
+            var result_tbody = jQuery("#result_list tbody");
+            result_tbody.empty();
+
+            for (var i = 0; i < result.length; i++) {
+                foo_str = "<tr>"; 
+                for (var j = 0; j < result[i].length; j++) {
+                if (j == 0) {
+                    var link_str = "<a href='/cv_detail/"+result[i][j]+"'>"
+                        foo_str += "<td>"+link_str+ result[i][j] +"</a></td>"
+                }
+                else {
+                    foo_str += "<td>" + result[i][j] + "</td>"  
+                }
+                };
+                foo_str += "</tr>";
+                result_tbody.append(foo_str);
+            };
+       
+            },
+            fail: function() {
+            }
+    });
+}
+</script>
+{% endblock %}
+
